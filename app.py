@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
-from streamlit_gsheets import GSheetsConnection
+from streamlit_gsheets import GSheetsConnection  # This stays the same
 import pandas as pd
 
 # 1. Page Configuration
@@ -70,5 +70,6 @@ with col2:
             st.markdown(f"✅ **{name}**")
     except:
         st.write("No suggestions yet. Be the first!")
+
 
 st.markdown("</div>", unsafe_allow_html=True)
