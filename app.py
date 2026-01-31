@@ -1,75 +1,67 @@
 import streamlit as st
 import streamlit.components.v1 as components
-from streamlit_gsheets import GSheetsConnection  # This stays the same
+from streamlit_gsheets import GSheetsConnection
 import pandas as pd
 
-# 1. Page Configuration
-st.set_page_config(
-    page_title="Kuantan Top 10",
-    page_icon="🍴",
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
+# Page Config
+st.set_page_config(page_title="Kuantan Top 10", page_icon="🍴", layout="wide")
 
-# 2. CSS to hide Streamlit UI for a cleaner "Website" look
+# Hide Streamlit elements for a professional look
 st.markdown("""
     <style>
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
         header {visibility: hidden;}
         .block-container { padding: 0rem; }
-        iframe { border: none; }
     </style>
 """, unsafe_allow_html=True)
 
-# 3. Connect to Google Sheets
-# Ensure your Sheet URL is in Streamlit Secrets or used here
+# 1. Connect to your Google Sheet
+# Note: Ensure the sheet is shared with "Anyone with the link can edit"
 SHEET_URL = "https://docs.google.com/spreadsheets/d/1SMuUNaTpz-_hPP8DtZ8DTBoyRRkE_lFeRV40yeb3Kl4/edit?usp=sharing"
 conn = st.connection("gsheets", type=GSheetsConnection)
 
-# 4. Load the Premium HTML Frontend
+# 2. Display your Premium HTML Content
 try:
     with open("index.html", "r", encoding="utf-8") as f:
         html_code = f.read()
-    components.html(html_code, height=1350, scrolling=True)
+    # Height adjusted to show your lists; scrolling enabled
+    components.html(html_code, height=1100, scrolling=True)
 except FileNotFoundError:
-    st.error("HTML file not found. Please ensure index.html is in the same folder.")
+    st.error("Please upload index.html to your GitHub repository.")
 
-# 5. Community Submission Section (Python/Streamlit)
-st.markdown("<div style='padding: 40px; background-color: #fcfaf8;'>", unsafe_allow_html=True)
+# 3. Integrated Submission Section (Python)
+st.markdown("<div style='padding: 40px; background-color: #000; color: white;'>", unsafe_allow_html=True)
 col1, col2 = st.columns([2, 1])
 
 with col1:
-    st.title("📍 Submit Your Place")
+    st.markdown("## 📍 Submit Your Place")
     st.write("Is there a hidden gem missing? Add it to our community review queue.")
     
     with st.form("suggestion_form", clear_on_submit=True):
         res_name = st.text_input("Restaurant Full Name")
+        res_reason = st.text_area("Why should it be in the Top 10?")
         category = st.selectbox("Category", ["Ayam Gepuk", "Mamak", "Nasi Lemak", "Cafes"])
         submit_btn = st.form_submit_button("SUBMIT FOR REVIEW")
 
         if submit_btn and res_name:
-            try:
-                # Read existing data
-                df = conn.read(spreadsheet=SHEET_URL)
-                # Create new row
-                new_data = pd.DataFrame([{"Restaurant Name": res_name}])
-                # Combine and Update
-                updated_df = pd.concat([df, new_data], ignore_index=True)
-                conn.update(spreadsheet=SHEET_URL, data=updated_df)
-                st.success(f"Successfully submitted {res_name}!")
-            except Exception as e:
-                st.error(f"Error: {e}. Make sure the Google Sheet is set to 'Anyone with the link can edit'.")
+            # Read current data
+            df = conn.read(spreadsheet=SHEET_URL)
+            # Add new entry
+            new_row = pd.DataFrame([{"Restaurant Name": res_name, "Reason": res_reason}])
+            updated_df = pd.concat([df, new_row], ignore_index=True)
+            # Update Google Sheet
+            conn.update(spreadsheet=SHEET_URL, data=updated_df)
+            st.success(f"Successfully submitted {res_name} to the database!")
 
 with col2:
-    st.subheader("🔥 Latest Suggestions")
+    st.markdown("### 🔥 Latest Suggestions")
+    # Display the most recent 5 entries from your Google Sheet
     try:
-        # Show the last 5 names submitted to the sheet
-        display_df = conn.read(spreadsheet=SHEET_URL).tail(5)
-        for name in display_df["Restaurant Name"]:
-            st.markdown(f"✅ **{name}**")
+        current_data = conn.read(spreadsheet=SHEET_URL).tail(5)
+        for name in current_data["Restaurant Name"]:
+            st.markdown(f"✅ {name}")
     except:
-        st.write("No suggestions yet. Be the first!")
-
+        st.write("Waiting for first suggestion...")
 
 st.markdown("</div>", unsafe_allow_html=True)
