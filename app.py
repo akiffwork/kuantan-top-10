@@ -81,3 +81,4 @@ with col2:
         st.info("Start the trend by submitting the first spot!")
 
 st.markdown("</div>", unsafe_allow_html=True)
+
