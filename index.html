@@ -5,115 +5,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuantan Top 10 | 2026 Dining Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #fcfaf8; }
+        body { font-family: 'Inter', sans-serif; background-color: #f5f2ed; color: #1a2a3a; margin: 0; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         .gold { color: #b38b59; }
-        .tab-active { border-bottom: 2px solid #1a1a1a; color: #1a1a1a !important; font-weight: 700; }
-        .card { transition: all 0.3s ease; border-color: #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between; background: white; }
-        .card:hover { border-color: #b38b59; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
+        
+        .tab-btn { transition: 0.3s; border-bottom: 2px solid transparent; color: #94a3b8; font-weight: 600; }
+        .tab-active { border-bottom: 2px solid #52718e; color: #52718e !important; font-weight: 800; }
+        
+        .card { 
+            transition: all 0.3s ease; 
+            border: 1px solid #e2e2e2; 
+            background: white; 
+            border-radius: 12px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            height: 100%;
+        }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.04); }
+
         .badge-halal { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
         .badge-friendly { background: #fff3e0; color: #ef6c00; border: 1px solid #ffe0b2; }
-        .badge-non { background: #FF0000 color: #FF0000; border: 1px solid #FF0000; }
-        .btn-action { background: #1a1a1a; color: white; transition: 0.3s; text-align: center; font-size: 10px; font-weight: bold; letter-spacing: 0.1em; padding: 12px; }
-        .btn-action:hover { background: #b38b59; }
-        .btn-outline { border: 1px solid #eee; transition: 0.3s; font-size: 10px; font-weight: bold; letter-spacing: 0.1em; padding: 12px; text-align: center; }
-        .btn-outline:hover { background: #fafafa; border-color: #b38b59; }
+        .badge-non { background: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
+
+        .btn-action { background: #52718e; color: white !important; text-align: center; font-size: 10px; font-weight: bold; letter-spacing: 0.1em; padding: 12px; border-radius: 6px; }
+        .btn-outline { border: 1px solid #dde6ed; color: #52718e !important; font-size: 10px; font-weight: bold; letter-spacing: 0.1em; padding: 12px; text-align: center; border-radius: 6px; }
+        .star-rating { color: #facc15; font-size: 11px; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .star-rating { color: #facc15; font-size: 12px; }
-        .submit-section { background-color: #f4f1ee; border-top: 1px solid #e5e5e5; }
     </style>
 </head>
-<body class="text-slate-900">
+<body>
 
     <header class="py-16 px-6 text-center bg-white border-b border-stone-100">
-        <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight">Kuantan Top 10</h1>
-        <p class="text-stone-400 text-[11px] md:text-[13px] font-bold uppercase tracking-[0.4em] italic">The Definitive Shortlist for the Discerning Local</p>
+        <h1 class="text-5xl md:text-6xl font-bold mb-3 tracking-tight">Kuantan Top 10</h1>
+        <p class="text-stone-400 text-[11px] font-bold uppercase tracking-[0.4em] italic">The 2026 Collection</p>
     </header>
 
-    <nav class="sticky top-0 z-50 bg-white border-b border-stone-200 shadow-sm">
-        <div class="max-w-5xl mx-auto flex justify-center space-x-4 md:space-x-12 p-4 overflow-x-auto no-scrollbar">
-            <button onclick="openTab(event, 'gepuk')" class="tab-btn tab-active text-stone-400 text-[9px] md:text-[10px] uppercase tracking-widest pb-1">Ayam Gepuk</button>
-            <button onclick="openTab(event, 'mamak')" class="tab-btn text-stone-400 text-[9px] md:text-[10px] uppercase tracking-widest pb-1">Mamak</button>
-            <button onclick="openTab(event, 'nasilemak')" class="tab-btn text-stone-400 text-[9px] md:text-[10px] uppercase tracking-widest pb-1">Nasi Lemak</button>
-            <button onclick="openTab(event, 'cafes')" class="tab-btn text-stone-400 text-[9px] md:text-[10px] uppercase tracking-widest pb-1">Cafes</button>
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone-200">
+        <div class="max-w-5xl mx-auto flex justify-center space-x-8 md:space-x-12 p-4 overflow-x-auto no-scrollbar">
+            <button onclick="openTab(event, 'gepuk')" class="tab-btn tab-active text-[10px] uppercase tracking-widest pb-1">Ayam Gepuk</button>
+            <button onclick="openTab(event, 'mamak')" class="tab-btn text-[10px] uppercase tracking-widest pb-1">Mamak</button>
+            <button onclick="openTab(event, 'nasilemak')" class="tab-btn text-[10px] uppercase tracking-widest pb-1">Nasi Lemak</button>
+            <button onclick="openTab(event, 'cafes')" class="tab-btn text-[10px] uppercase tracking-widest pb-1">Cafes</button>
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto px-6 py-12">
         <div id="content-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-
     </main>
 
     <footer class="py-12 text-center border-t border-stone-100 bg-white">
-        <p class="text-[9px] tracking-[0.5em] font-bold uppercase gold mb-2">Verified & Active Destinations</p>
-        <p class="text-[8px] text-stone-400 uppercase tracking-widest">Data updated for 2026</p>
+        <p class="text-[9px] tracking-[0.5em] font-bold uppercase gold mb-2">Verified Kuantan Establishments</p>
+        <p class="text-[8px] text-stone-300 uppercase tracking-widest">© 2026 Dining Guide • Professional Edition</p>
     </footer>
 
     <script>
         const data = {
-            gepuk: {
-                list: [
-                    {n: "Ayam Gepuk Pak Gembus IM7", c: "Pak Gembus IM", d: "Iconic garlic-peanut sambal and consistent crunch.", r: "4.2k", s: "Halal Certified", stars: 5},
-                    {n: "Ayam Gepuk Top Global City Centre", c: "Top Global", d: "Highest heat levels and legendary fried cabbage.", r: "1.2k", s: "Muslim Friendly", stars: 4.5},
-                    {n: "Ayam Gepuk Pak Gembus Putra Square", c: "Pak Gembus Town", d: "Consistent quality in the urban commercial hub.", r: "1.1k", s: "Halal Certified", stars: 4.5},
-                    {n: "Ayam Gepuk AG Taman Tas", c: "Gepuk AG", d: "Generous portions and neighborhood atmosphere.", r: "180", s: "Muslim Friendly", stars: 4},
-                    {n: "Warung Tembusu Indera Mahkota", c: "Tembusu", d: "Viral sambal ulek made fresh for every order.", r: "520", s: "Muslim Friendly", stars: 4},
-                    {n: "Ayam Gepuk Ibuk Bapak", c: "Ibuk Bapak", d: "Crispy enoki mushrooms and savory Indonesian sides.", r: "450", s: "Muslim Friendly", stars: 4},
-                    {n: "Ayam Gepuk Pak Pi Sekilau Mewah", c: "Pak Pi", d: "Tender chicken with a vibrant fresh chili kick.", r: "90", s: "Muslim Friendly", stars: 4},
-                    {n: "Ayam Gepuk Ori Jalan Tun Ismail", c: "Gepuk Ori", d: "Authentic Indonesian smash style with deep spices.", r: "140", s: "Muslim Friendly", stars: 4},
-                    {n: "Ayam Gepuk Sambal Sado Kuantan", c: "Sambal Sado", d: "Intense heat for extreme spice enthusiasts.", r: "45", s: "Muslim Friendly", stars: 4},
-                    {n: "Penyetan Pak Han Street Food", c: "Pak Han", d: "Solid traditional Indonesian preparation.", r: "310", s: "Muslim Friendly", stars: 4}
-                ],
-                trending: ["Ayam Gepuk Wong Solo", "Gepuk Leleh Kubang Buaya", "Sambal Penyet Wong Jowo"]
-            },
-            mamak: {
-                list: [
-                    {n: "Restoran Taj City Centre", c: "Taj Town", d: "Famous for 'Roti Tsunami' and lightning service.", r: "2.8k", s: "Muslim Friendly", stars: 5},
-                    {n: "Restoran Mustafa Indera Mahkota", c: "Mustafa IM", d: "Prime spot for late-night Maggi Goreng.", r: "1.5k", s: "Muslim Friendly", stars: 4.5},
-                    {n: "Taj Maju Putra Square", c: "Taj Maju", d: "Modern mamak with a massive Nasi Kandar spread.", r: "1.2k", s: "Muslim Friendly", stars: 4.5},
-                    {n: "Restoran Alif Air Putih", c: "Alif", d: "Iconic landmark with thick Teh Tarik.", r: "810", s: "Muslim Friendly", stars: 4.5},
-                    {n: "Taj Makmur Beserah", c: "Taj Makmur", d: "Spacious and clean with various curry choices.", r: "1.1k", s: "Muslim Friendly", stars: 4},
-                    {n: "Restoran Mydin Town Centre", c: "Mydin", d: "Historic classic known for their legendary Murtabak.", r: "1.2k", s: "Muslim Friendly", stars: 4},
-                    {n: "Taj Madras Semambu", c: "Taj Madras", d: "The go-to lunch spot for the industrial sector.", r: "620", s: "Muslim Friendly", stars: 4},
-                    {n: "Restoran Nasmir IM", c: "Nasmir", d: "Excellent fried chicken and modern seating.", r: "915", s: "Muslim Friendly", stars: 4},
-                    {n: "Restoran Ariff Balok", c: "Ariff Balok", d: "Coastal atmosphere with great Roti Pisang.", r: "460", s: "Muslim Friendly", stars: 4},
-                    {n: "Restoran Mamak Alhijrah", c: "Alhijrah", d: "Local neighborhood feel with consistent flavors.", r: "320", s: "Muslim Friendly", stars: 4}
-                ],
-                trending: ["Restoran New Shahi", "Mamak Corner Bukit Sekilau", "Taj Maju IM8"]
-            },
-            nasilemak: {
-                list: [
-                    {n: "Restoran Zaman Nasi Lemak", c: "Zaman", d: "The absolute breakfast king. Authentic wrap.", r: "3.1k", s: "Muslim Friendly", stars: 5},
-                    {n: "Nasi Lemak Awang Beserah", c: "Awang", d: "Legendary Ayam Goreng Berempah and sweet sambal.", r: "960", s: "Muslim Friendly", stars: 5},
-                    {n: "Warung Esah Nasi Lemak", c: "Warung Esah", d: "Traditional coastal breakfast with squid sambal.", r: "840", s: "Muslim Friendly", stars: 4.5},
-                    {n: "Nasi Lemak Beserah Station", c: "Beserah Station", d: "Premium rice texture and high-quality ingredients.", r: "210", s: "Muslim Friendly", stars: 4.5},
-                    {n: "Kedai Kopi Ah Soon", c: "Ah Soon", d: "Chinese-style Nasi Lemak (Pork-free ingredients).", r: "155", s: "Muslim Friendly", stars: 4},
-                    {n: "Nasi Lemak Mok Cun IM", c: "Mok Cun", d: "Fragrant coconut rice and dark savory sambal.", r: "410", s: "Muslim Friendly", stars: 4},
-                    {n: "House of Nasi Lemak Kuantan", c: "House of NL", d: "Massive variety of traditional side dishes.", r: "360", s: "Muslim Friendly", stars: 4},
-                    {n: "Nasi Lemak Beratur IM", c: "Beratur", d: "Freshly packed daily; queues for a reason.", r: "185", s: "Muslim Friendly", stars: 4},
-                    {n: "Nasi Lemak Surf & Turf", c: "Surf & Turf", d: "Fusion style with premium seafood toppings.", r: "240", s: "Muslim Friendly", stars: 4},
-                    {n: "Nasi Lemak Bot Nelayan", c: "Bot Nelayan", d: "Morning favorite for Tanjung Lumpur workers.", r: "130", s: "Muslim Friendly", stars: 4}
-                ],
-                trending: ["Nasi Lemak Paru Viral", "NL Simpang Pelindung", "Warung Kak Nah Tanjung Lumpur"]
-            },
-            cafes: {
-                list: [
-                    {n: "Kopi & Teh Teluk Sisek", c: "Kopi & Teh", d: "Benchmark for specialty coffee in Kuantan.", r: "1.5k", s: "Muslim Friendly", stars: 5},
-                    {n: "90 Degrees Café & Art", c: "90 Degrees", d: "Heritage wooden building; Artisan food & no alcohol.", r: "1.1k", s: "Muslim Friendly", stars: 5},
-                    {n: "Coastal Store Beserah", c: "Coastal Store", d: "Rustic charm with artisanal fusion pastries.", r: "810", s: "Muslim Friendly", stars: 4.5},
-                    {n: "Tjantek Café & Art", c: "Tjantek", d: "Premier dining space with art-gallery vibes.", r: "620", s: "Muslim Friendly", stars: 4.5},
-                    {n: "Beanz & Co Specialty Coffee", c: "Beanz & Co", d: "Modern industrial design; pork-free kitchen.", r: "920", s: "Muslim Friendly", stars: 4.5},
-                    {n: "Lakar Specialty Coffee", c: "Lakar", d: "Minimalist sanctuary for coffee purists.", r: "360", s: "Muslim Friendly", stars: 4.5},
-                    {n: "Lena Cafe by Love Knot", c: "Lena Cafe", d: "Floral aesthetic with premium Italian-fusion.", r: "470", s: "Muslim Friendly", stars: 4.5},
-                    {n: "Kula Cakes Kuantan", c: "Kula Cakes", d: "Iconic home of the famous Mango Cheesecake.", r: "2.1k", s: "Muslim Friendly", stars: 4.5},
-                    {n: "Kuantan Pickers & Cafe", c: "Kuantan Pickers", d: "Nostalgic retro atmosphere with local-modern coffee.", r: "1.2k", s: "Muslim Friendly", stars: 4},
-                    {n: "The Alchemist Bar & Cafe", c: "The Alchemist", d: "Boutique spot serving Pork & Alcohol pairings.", r: "210", s: "Non-Halal (Pork/Alcohol)", stars: 4}
-                ],
-                trending: ["About Coffee Garden", "Zoo Coffee Kuantan", "Common Ground Cafe"]
-            }
+            gepuk: [
+                {n: "Ayam Gepuk Pak Gembus Putra Square", c: "Pak Gembus Town", d: "Centrally located with official JAKIM Halal status and consistent quality.", s: "Muslim Friendly", stars: 5},
+                {n: "Ayam Gepuk Pak Gembus IM7", c: "Pak Gembus IM", d: "Iconic garlic-peanut sambal and consistent crunch. Officially certified.", s: "Halal Verified", stars: 5},
+                {n: "Ayam Gepuk AG (IM 7)", c: "Gepuk AG", d: "Local powerhouse. Known for extreme spice and fried cabbage.", s: "Muslim Friendly", stars: 5},
+                {n: "Warung Tembusu IM1", c: "Tembusu", d: "Viral sambal ulek that is made fresh upon every order.", s: "Muslim Friendly", stars: 4.5},
+                {n: "Ayam Gepuk Ibuk Bapak", c: "Ibuk Bapak", d: "Savory Indonesian style with a wide range of spicy sides.", s: "Muslim Friendly", stars: 4},
+                {n: "Ayam Gepuk Pak Pi Sekilau", c: "Pak Pi", d: "Neighborhood favorite with vibrant fresh chili.", s: "Muslim Friendly", stars: 4},
+                {n: "Ayam Gepuk AG Taman Tas", c: "Gepuk AG Tas", d: "Huge portions and neighborhood vibes near the airport area.", s: "Muslim Friendly", stars: 4},
+                {n: "Ayam Gepuk Ori Jalan Tun Ismail", c: "Gepuk Ori", d: "Traditional Indonesian preparation with deep spices.", s: "Muslim Friendly", stars: 4},
+                {n: "Ayam Gepuk Sambal Sado", c: "Sambal Sado", d: "Tanjung Lumpur's pride for those who crave extreme heat.", s: "Muslim Friendly", stars: 4},
+                {n: "Penyetan Pak Han", c: "Pak Han", d: "Street food style focusing on authentic Indonesian flavors.", s: "Muslim Friendly", stars: 4}
+            ],
+            mamak: [
+                {n: "Restoran Taj City Centre", c: "Taj Town", d: "Famous for Roti Tsunami and its central location.", s: "Muslim Friendly", stars: 5},
+                {n: "Restoran Mustafa IM", c: "Mustafa", d: "The go-to late night spot in Indera Mahkota. Great Maggi Goreng.", s: "Muslim Friendly", stars: 5},
+                {n: "Restoran Alif Air Putih", c: "Alif", d: "The heart of Air Putih. High-quality Teh Tarik.", s: "Muslim Friendly", stars: 4.5},
+                {n: "Taj Maju Putra Square", c: "Taj Maju", d: "Modern atmosphere with an excellent Nasi Kandar selection.", s: "Muslim Friendly", stars: 4.5},
+                {n: "Restoran Nasmir IM", c: "Nasmir", d: "Spacious and modern with consistent Nasi Kandar quality.", s: "Muslim Friendly", stars: 4},
+                {n: "Restoran Mydin Town", c: "Mydin", d: "Historic Mamak spot known for their savory Murtabak.", s: "Muslim Friendly", stars: 4},
+                {n: "Taj Makmur Beserah", c: "Taj Makmur", d: "A reliable neighborhood staple near the coast.", s: "Muslim Friendly", stars: 4},
+                {n: "Restoran Al-Bidayah", c: "Al-Bidayah", d: "New trending spot in town with great seating.", s: "Muslim Friendly", stars: 4},
+                {n: "Restoran Ariff Balok", c: "Ariff", d: "Perfect stop for tourists and locals in the beach area.", s: "Muslim Friendly", stars: 4},
+                {n: "Bombay Restaurant", c: "Bombay", d: "Specializes in Biryani and authentic Indian-Mamak fusion.", s: "Muslim Friendly", stars: 4}
+            ],
+            nasilemak: [
+                {n: "Restoran Zaman", c: "Zaman", d: "The breakfast king of Kuantan. Traditional leaf wrap.", s: "Muslim Friendly", stars: 5},
+                {n: "Nasi Lemak Awang Beserah", c: "Awang", d: "Famous for their crunchy fried chicken and Beserah style.", s: "Muslim Friendly", stars: 5},
+                {n: "Nasi Lemak Place Air Putih", c: "NL Place", d: "Cozy spot specializing in thick sambal and fragrant rice.", s: "Muslim Friendly", stars: 4.5},
+                {n: "Warung Esah Kuantan", c: "Warung Esah", d: "Classic breakfast destination with local kampung vibes.", s: "Muslim Friendly", stars: 4.5},
+                {n: "Nasi Lemak Shahputera IM", c: "Shahputera", d: "Known for their salted egg and premium fried chicken.", s: "Muslim Friendly", stars: 4.5},
+                {n: "Kedai Kopi Ah Soon", c: "Ah Soon", d: "Chinese-style Nasi Lemak (pork-free) and curry noodles.", s: "Muslim Friendly", stars: 4.5},
+                {n: "House of Nasi Lemak", c: "House NL", d: "Huge variety of side dishes like squid and beef rendang.", s: "Muslim Friendly", stars: 4},
+                {n: "Nasi Lemak Bot Nelayan", c: "Bot Nelayan", d: "Tanjung Lumpur favorite known for rich coconut rice.", s: "Muslim Friendly", stars: 4},
+                {n: "Nasi Lemak Kayu Api", c: "Kayu Api", d: "Traditional smokey flavor that stands out.", s: "Muslim Friendly", stars: 4},
+                {n: "Nasi Lemak Mak Long", c: "Mak Long", d: "Consistent local favorite near the Beserah station area.", s: "Muslim Friendly", stars: 4}
+            ],
+            cafes: [
+                {n: "Kula Cakes", c: "Kula Cakes", d: "Home of the famous Mango Cheesecake. A Kuantan icon.", s: "Muslim Friendly", stars: 5},
+                {n: "90 Degrees Café & Art", c: "90 Degrees", d: "Refurbished heritage building with artisan coffee.", s: "Muslim Friendly", stars: 5},
+                {n: "Tjantek Café & Art", c: "Tjantek", d: "Sophisticated vibe with excellent fusion dishes.", s: "Muslim Friendly", stars: 4.5},
+                {n: "Beanz & Co", c: "Beanz & Co", d: "Specialty coffee roasters with an industrial aesthetic.", s: "Muslim Friendly", stars: 4.5},
+                {n: "Kantin & Co", c: "Kantin", d: "Aesthetic rustic decor with signature brews.", s: "Muslim Friendly", stars: 4.5},
+                {n: "Coastal Store Timurbay", c: "Coastal", d: "Beachfront vibes at Beserah with artisanal pastries.", s: "Muslim Friendly", stars: 4.5},
+                {n: "Kuantan Pickers & Cafe", c: "Pickers", d: "Vintage retro decor serving local coffee and snacks.", s: "Muslim Friendly", stars: 4},
+                {n: "Lena Cafe by Love Knot", c: "Lena", d: "Elegant floral setting perfect for high-tea sessions.", s: "Muslim Friendly", stars: 4},
+                {n: "Lakar Specialty Coffee", c: "Lakar", d: "Minimalist coffee shop for serious enthusiasts.", s: "Muslim Friendly", stars: 4},
+                {n: "The Alchemist Bar & Cafe", c: "Alchemist", d: "Upscale specialty cafe with unique pairings.", s: "Non-Halal (Pork/Alcohol)", stars: 4}
+            ]
         };
 
         function getStars(rating) {
@@ -127,47 +125,31 @@
         }
 
         function getStatusClass(status) {
-            if (status.includes("Halal")) return "badge-halal";
             if (status.includes("Non-Halal")) return "badge-non";
+            if (status.includes("Halal Verified")) return "badge-halal";
             return "badge-friendly";
         }
 
         function renderCategory(cat) {
             const container = document.getElementById('content-grid');
-            const suggestionsContainer = document.getElementById('suggestions-list');
-            
-            // Render Main Grid
-            container.innerHTML = data[cat].list.map((item, i) => `
-                <div class="card p-8 border shadow-sm rounded-lg">
+            container.innerHTML = data[cat].map((item, i) => `
+                <div class="card p-8 shadow-sm">
                     <div>
                         <div class="flex justify-between items-start mb-2">
-                            <span class="text-[9px] gold font-bold uppercase tracking-widest">Rank #0${i+1}</span>
+                            <span class="text-[9px] gold font-bold uppercase tracking-[0.2em]">Rank #0${i+1}</span>
                             <div class="star-rating">${getStars(item.stars)}</div>
                         </div>
                         <div class="mt-1 mb-3">
-                            <h3 class="font-bold text-lg leading-tight">${item.n}</h3>
+                            <h3 class="font-bold text-xl leading-tight">${item.n}</h3>
                             <p class="text-[10px] text-stone-400 font-semibold uppercase tracking-wider italic">"${item.c}"</p>
                         </div>
-                        <span class="text-[8px] px-2 py-1 rounded font-bold uppercase ${getStatusClass(item.s)}">${item.s}</span>
-                        <p class="text-xs text-stone-500 italic border-l-2 border-stone-200 pl-3 mt-4">"${item.d}"</p>
+                        <span class="text-[8px] px-2 py-1 rounded font-black uppercase ${getStatusClass(item.s)}">${item.s}</span>
+                        <p class="text-xs text-stone-500 italic border-l-2 border-stone-200 pl-3 mt-5">"${item.d}"</p>
                     </div>
                     <div class="grid grid-cols-2 gap-2 mt-8">
-                        <a href="https://www.google.com/search?q=${encodeURIComponent(item.n)}" target="_blank" class="btn-action">INFO</a>
-                        <a href="https://www.google.com/maps/search/${encodeURIComponent(item.n)}" target="_blank" class="btn-outline">MAPS</a>
+                        <a href="https://www.google.com/search?q=${encodeURIComponent(item.n + ' Kuantan')}" target="_blank" class="btn-action">VIEW INFO</a>
+                        <a href="https://www.google.com/maps/search/${encodeURIComponent(item.n + ' Kuantan')}" target="_blank" class="btn-outline">LOCATION</a>
                     </div>
-                </div>
-            `).join('');
-
-            // Render Trending Suggestions
-            suggestionsContainer.innerHTML = data[cat].trending.map((name, i) => `
-                <div class="bg-white p-4 border border-stone-200 rounded flex justify-between items-center">
-                    <div class="flex items-center">
-                        <span class="text-xs gold font-bold mr-3">#${i+1}</span>
-                        <span class="text-sm font-semibold">${name}</span>
-                    </div>
-                    <button onclick="this.classList.toggle('gold')" class="text-xs text-stone-300 hover:text-stone-800 transition">
-                        <i class="fa-solid fa-circle-up text-lg"></i>
-                    </button>
                 </div>
             `).join('');
         }
@@ -183,5 +165,4 @@
         renderCategory('gepuk');
     </script>
 </body>
-
 </html>
