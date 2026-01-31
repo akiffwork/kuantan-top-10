@@ -65,3 +65,4 @@ with col2:
         st.write("Waiting for first suggestion...")
 
 st.markdown("</div>", unsafe_allow_html=True)
+
