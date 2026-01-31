@@ -45,30 +45,6 @@
     <main class="max-w-7xl mx-auto px-6 py-12">
         <div id="content-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
 
-        <section class="mt-20 p-8 md:p-12 submit-section rounded-xl border border-stone-200">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div>
-                    <span class="gold font-bold text-[10px] uppercase tracking-widest">Community Driven</span>
-                    <h2 class="text-3xl font-bold mt-2 mb-4">Don't see your favorite?</h2>
-                    <p class="text-stone-500 text-sm mb-8">We curate our lists quarterly. If there is a hidden gem we missed, let the community know.</p>
-                    
-                    <form onsubmit="event.preventDefault(); alert('Thank you! Your suggestion has been queued for review.');" class="space-y-4">
-                        <input type="text" placeholder="Restaurant Full Name" class="w-full p-4 text-xs border border-stone-300 rounded focus:outline-none focus:border-stone-800">
-                        <textarea placeholder="Why should it be in the Top 10?" class="w-full p-4 text-xs border border-stone-300 rounded h-24 focus:outline-none focus:border-stone-800"></textarea>
-                        <button class="btn-action w-full">SUBMIT FOR REVIEW</button>
-                    </form>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-bold mb-6 flex items-center">
-                        <i class="fa-solid fa-fire-flame-curved mr-2 gold"></i> 
-                        Top 3 Community Suggestions
-                    </h3>
-                    <div id="suggestions-list" class="space-y-4">
-                        </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer class="py-12 text-center border-t border-stone-100 bg-white">
@@ -207,4 +183,5 @@
         renderCategory('gepuk');
     </script>
 </body>
+
 </html>
